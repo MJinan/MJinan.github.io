@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Sayang ❤️</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Dancing+Script:wght@400;700&family=Shippori+Antique&display=swap" rel="stylesheet">
+    
+    <!-- GSAP for smooth animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+    
+    <!-- MJinan Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.all.min.js"></script>
+    <script src="https://unpkg.com/typeit@8.7.0/dist/index.umd.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Initial Loader -->
+    <div id="loader">
+        <div class="heart-pulse">❤️</div>
+    </div>
+
+    <!-- Site-wide Particles -->
+    <div id="particles-container"></div>
+
+    <!-- Audio -->
+    <audio src="music/Sal Priadi - Serta Mulia (Official Lyric Video) - Sal Priadi.mp3" id="linkmp3" loop></audio>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero">
+            <div class="hero-overlay"></div>
+            <div class="hero-content" style="opacity: 0;">
+                <div id="panda-mascot" style="display: none;">
+                    <img src="https://feeldreams.github.io/cilukba.gif" alt="Panda Mascot">
+                </div>
+                
+                <h2 class="subtitle">Selalu & Selamanya</h2>
+                <h1 class="title">Happy Birthday,<br><span class="name romantic-font" id="userName">Sayang</span></h1>
+                <p class="tagline">Hari ini adalah tentang dedek, dan betapa istimewanya dedek buat mas sayang.</p>
+            </div>
+            
+            <div class="scroll-indicator">
+                <div class="heart-trigger">❤️</div>
+                <span>Buka Kejutan Cinta</span>
+            </div>
+            <footer class="section-footer">
+                <p>&copy; 2026 Crafted with ❤️ for You</p>
+            </footer>
+        </section>
+
+        <!-- Journey Section -->
+        <section id="journey">
+            <div class="container text-center">
+                <div class="section-header">
+                    <img src="https://feeldreams.github.io/bunga.gif" alt="Flower Sticker" class="header-sticker" data-reveal="zoom-in">
+                    <h2 class="romantic-font">Kisah Kita</h2>
+                    <p>7 Tahun yang penuh warna, tawa, dan cinta yang tak terbatas.</p>
+                </div>
+                <div class="journey-content" data-reveal="fade-up">
+                    <div class="journey-card glass">
+                        <img src="https://feeldreams.github.io/pusn.gif" alt="Pusn Sticker" class="card-sticker">
+                        <p id="typer-journey"></p>
+                    </div>
+                </div>
+                <div class="next-section-btn romantic-btn" onclick="scrollToNext('#wish')">
+                    <span>Baca Pesan Harapan Mas</span>
+                    <div class="heart-icon">💖</div>
+                </div>
+                <footer class="section-footer">
+                    <p>&copy; 2026 Crafted with ❤️ for You</p>
+                </footer>
+            </div>
+        </section>
+
+
+
+        <!-- Wish Section -->
+        <section id="wish">
+            <div class="container">
+                <div class="wish-card glass" data-reveal="fade-up">
+                    <img src="https://feeldreams.github.io/pandaputih.gif" alt="Panda Wish" class="card-sticker-large">
+                    <h2 class="romantic-font">Harapan Mas Buat Dedek Sayang</h2>
+                    <div class="message-container">
+                        <p id="typer-wish" class="message-text"></p>
+                    </div>
+                    <p class="signature" style="margin-top: 20px;">With all my love,</p>
+                    <p class="sender-name">Your Future Husband ❤️</p>
+                </div>
+                <div class="next-section-btn romantic-btn" onclick="scrollToNext('#game')">
+                    <span>Ayo Main Game Sayang!</span>
+                    <div class="heart-icon">💖</div>
+                </div>
+                <footer class="section-footer">
+                    <p>&copy; 2026 Crafted with ❤️ for You</p>
+                </footer>
+            </div>
+        </section>
+
+        <!-- Panda Game Section -->
+        <section id="game">
+            <div class="container text-center">
+                <div class="section-header">
+                    <img src="https://feeldreams.github.io/pandacoklat.gif" alt="Panda Game" class="header-sticker">
+                    <h2 class="romantic-font">Panen Cinta Panda</h2>
+                    <p>Bantu Panda mengumpulkan Hati ❤️ dan Bunga 🌹 untuk membuka kado!</p>
+                </div>
+                <div class="game-container glass">
+                    <div id="game-canvas">
+                        <div id="panda-catcher">
+                            <img src="https://feeldreams.github.io/pandakuning.gif" alt="Panda Catcher">
+                        </div>
+                    </div>
+                    <div class="game-ui">
+                        <div class="love-meter">
+                            <div id="love-meter-fill"></div>
+                        </div>
+                        <div class="score-display">Love Meter: <span id="score">0</span>%</div>
+                    </div>
+                    <div id="game-message"></div>
+                </div>
+                <footer class="section-footer">
+                    <p>&copy; 2026 Crafted with ❤️ for You</p>
+                </footer>
+            </div>
+        </section>
+    </main>
+
+    <!-- End of Main -->
+
+    <!-- Panda Transition Overlay -->
+    <div id="panda-transition">
+        <div class="transition-bg"></div>
+        <div class="panda-runner">
+            <img src="https://feeldreams.github.io/pandakuning.gif" alt="Panda Transition">
+        </div>
+    </div>
+
+    <!-- Heart Fireworks Canvas -->
+    <canvas id="fireworks"></canvas>
+
+    <script src="script.js"></script>
+</body>
+</html>

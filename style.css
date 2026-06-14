@@ -1,0 +1,789 @@
+:root {
+    --primary-color: #ffafcc; /* Soft Pink */
+    --secondary-color: #bde0fe; /* Soft Blue */
+    --accent-color: #ffc8dd; /* Thistle Rose */
+    --gold-accent: #fcf6bd;
+    --text-color: #3d348b;
+    --light-text: #ffffff;
+    --bg-color: #f8f9fa;
+    --glass-bg: rgba(255, 255, 255, 0.65);
+    --glass-border: rgba(255, 255, 255, 0.8);
+    --shadow-premium: 0 20px 40px rgba(61, 52, 139, 0.1);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap');
+
+
+.romantic-font {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3.5rem !important;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    background-image: url("https://www.transparenttextures.com/patterns/pinstriped-suit.png");
+    overflow: hidden; /* NO SCROLL CONCEPT */
+    line-height: 1.6;
+    height: 100vh;
+    width: 100vw;
+}
+
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+}
+
+.text-glow {
+    text-shadow: 0 0 15px rgba(255, 180, 162, 0.5);
+}
+
+/* Particles */
+#particles-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 99;
+}
+
+.particle {
+    position: absolute;
+    font-size: 1.2rem;
+    pointer-events: none;
+    opacity: 0.4; /* Softer particles */
+}
+
+/* Loader */
+#loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000; /* Above everything */
+}
+
+#loader::after {
+    content: 'Mempersiapkan kejutan...';
+    margin-top: 20px;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--primary-color);
+    letter-spacing: 1px;
+}
+
+.heart-pulse {
+    font-size: 3rem;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.5); }
+    100% { transform: scale(1); }
+}
+
+
+/* Hero Section */
+#hero {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: url('img/bg.png') no-repeat center center/cover;
+    background-attachment: fixed;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.5));
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    color: var(--light-text);
+}
+
+.hero-content .subtitle {
+    font-style: italic;
+    font-weight: 300;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: 2px;
+}
+
+.hero-content .title {
+    font-size: 5rem;
+    margin: 1rem 0;
+    line-height: 1.1;
+    font-weight: 700;
+    letter-spacing: -2px;
+}
+
+.hero-content .name {
+    color: var(--gold-accent);
+    text-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    display: block;
+    margin-top: 10px;
+}
+
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    opacity: 0;
+}
+
+#panda-mascot {
+    position: relative; /* Switch to relative for flow */
+    margin: 0 auto 20px; /* Center and push text down */
+    z-index: 5;
+    width: 150px; /* Slightly smaller for elegance */
+    display: block;
+}
+
+#panda-mascot img {
+    width: 100%;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1));
+}
+
+.tagline {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 2rem auto 0;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0.8;
+    z-index: 5;
+    cursor: pointer; /* Indica clickable */
+    transition: opacity 0.3s;
+}
+
+.scroll-indicator:hover {
+    opacity: 1;
+}
+
+.heart-trigger {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    filter: drop-shadow(0 0 10px rgba(255, 77, 77, 0.8));
+    animation: pulse-heart 1.5s infinite;
+}
+
+@keyframes pulse-heart {
+    0% { transform: scale(1); }
+    15% { transform: scale(1.3); }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.15); }
+    60% { transform: scale(1); }
+}
+
+.scroll-indicator span {
+    font-size: 1rem;
+    text-transform: none;
+    letter-spacing: 1px;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 5px 15px;
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+}
+
+section {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: none; /* Hide all by default */
+    align-items: center;
+    justify-content: center;
+    overflow-y: auto;
+    transition: opacity 0.8s ease;
+}
+
+
+#hero {
+    display: flex; /* Show hero first */
+    z-index: 10;
+}
+
+.container {
+    max-width: 100%;
+    min-height: 100%;
+    margin: 0;
+    padding: 60px 20px 120px 20px; /* Ample space for footer and header */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* Journey Section Redesign */
+#journey {
+    background: linear-gradient(180deg, #fff 0%, var(--accent-color) 100%);
+    position: relative;
+}
+
+.header-sticker {
+    width: 80px;
+    margin-bottom: 20px;
+}
+
+.journey-card.glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    padding: 60px 40px;
+    border-radius: 40px;
+    box-shadow: var(--shadow-premium);
+    max-width: 850px;
+    margin: 0 auto;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.journey-card.glass:hover {
+    transform: scale(1.02);
+}
+
+
+.card-sticker {
+    width: 60px;
+    display: block;
+    margin: 0 auto 30px;
+}
+
+#typer-journey {
+    font-family: 'Shippori Antique', sans-serif;
+    font-size: 1.4rem;
+    line-height: 1.8;
+    color: #4a4e69;
+    min-height: 120px;
+}
+
+#typer-journey b {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+/* Floating Music Control */
+#music-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 200;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    font-size: 1.2rem;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+/* Romantic Button Styling */
+.romantic-btn {
+    background: linear-gradient(135deg, rgba(255, 175, 204, 0.4), rgba(189, 224, 254, 0.4)) !important;
+    border: 2px solid var(--accent-color) !important;
+    padding: 20px 40px !important;
+    border-radius: 60px !important;
+}
+
+.romantic-btn span {
+    font-family: 'Dancing Script', cursive !important;
+    font-size: 1.5rem !important;
+    color: var(--text-color) !important;
+    margin-bottom: 5px !important;
+}
+
+.heart-icon {
+    font-size: 1.8rem;
+    animation: heartBeat 1.5s infinite;
+}
+
+@keyframes heartBeat {
+    0% { transform: scale(1); }
+    15% { transform: scale(1.3); }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.15); }
+    60% { transform: scale(1); }
+}
+
+.romantic-btn:hover {
+    background: var(--light-text) !important;
+    box-shadow: 0 0 30px var(--primary-color) !important;
+    transform: translateY(-10px) scale(1.05) !important;
+}
+
+
+/* Game Styles */
+#game {
+    background: linear-gradient(180deg, var(--accent-color) 0%, #fff 100%);
+    padding-bottom: 100px;
+}
+
+.game-container {
+    width: 95%;
+    max-width: 1000px;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    height: auto;
+}
+
+#game-canvas {
+    width: 100%;
+    height: 550px;
+    background: var(--glass-bg);
+    border: 2px solid var(--glass-border);
+    backdrop-filter: blur(20px);
+    border-radius: 40px;
+    position: relative;
+    overflow: hidden;
+    cursor: none;
+    touch-action: none;
+    box-shadow: var(--shadow-premium);
+}
+
+
+.game-ui {
+    background: white;
+    padding: 20px;
+    border-top: 1px solid #eee;
+}
+
+.love-meter {
+    width: 100%;
+    height: 10px;
+    background: #f0f0f0;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+#love-meter-fill {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #ffb4a2, #c9ada7);
+    transition: width 0.3s ease;
+}
+
+.score-display {
+    font-family: 'Shippori Antique', sans-serif;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.falling-heart {
+    position: absolute;
+    font-size: 2rem;
+    cursor: pointer;
+    user-select: none;
+    z-index: 10;
+}
+
+#game-message {
+    padding: 20px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+}
+
+/* Interactive Game */
+#game {
+    background: #faedcd;
+}
+
+#game-canvas {
+    width: 100%;
+    height: 450px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    cursor: none; /* Hide default cursor to use panda */
+    touch-action: none;
+}
+
+#panda-catcher {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 80px;
+    z-index: 20;
+    pointer-events: none;
+    transition: transform 0.1s ease-out;
+}
+
+#panda-catcher img {
+    width: 100%;
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1));
+}
+
+
+.win-banner {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 25px;
+    border-radius: 40px;
+    border: 3px solid var(--primary-color);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    font-family: 'Dancing Script', cursive;
+    color: var(--text-color);
+    width: 90%;
+    margin: 0 auto;
+    font-size: 1.5rem;
+}
+
+.win-banner span {
+    font-size: 2rem;
+    display: block;
+    margin-top: 10px;
+    color: var(--primary-color);
+}
+
+
+.falling-heart {
+    position: absolute;
+    font-size: 2.5rem; /* Larger for easier tapping */
+    user-select: none;
+    transition: transform 0.2s;
+    cursor: pointer;
+    padding: 10px; /* Increase tap area */
+    margin: -10px;
+    pointer-events: auto;
+    z-index: 100;
+}
+
+@media (max-width: 768px) {
+    .falling-heart {
+        font-size: 3rem; /* Even larger on mobile */
+    }
+}
+
+/* Memories Gallery Premium */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: 25px;
+    overflow: hidden;
+    background: var(--glass-bg);
+    padding: 20px;
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-premium);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+}
+
+.gallery-item:hover {
+    transform: translateY(-15px) rotate(2deg);
+    box-shadow: 0 30px 60px rgba(61, 52, 139, 0.15);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 20px;
+    transition: transform 0.8s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+.item-overlay {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 15px;
+    border-radius: 15px;
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--text-color);
+    transform: translateY(100px);
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    opacity: 0;
+}
+
+.gallery-item:hover .item-overlay {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Panda Transition Overlay Styling */
+#panda-transition {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.transition-bg {
+    position: absolute;
+    top: 0;
+    left: 100%; /* Start off-screen right */
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #ffafcc, #bde0fe);
+    box-shadow: -20px 0 50px rgba(0,0,0,0.1);
+}
+
+.panda-runner {
+    position: absolute;
+    left: 100%;
+    z-index: 10000;
+    transform: translateX(-50%);
+    opacity: 0;
+}
+
+.panda-runner img {
+    width: 150px;
+}
+
+
+/* Wish Card Enhancements */
+#wish {
+    background: url('https://www.transparenttextures.com/patterns/cubes.png');
+}
+
+.card-sticker-large {
+    width: 140px;
+    height: auto;
+    margin-bottom: 0px;
+    filter: drop-shadow(0 10px 20px rgba(255,175,204,0.3));
+    animation: floatingPanda 4s ease-in-out infinite;
+}
+
+@keyframes floatingPanda {
+    0%, 100% { transform: translateY(0) rotate(-2deg); }
+    50% { transform: translateY(-20px) rotate(3deg); }
+}
+
+.message-container {
+    min-height: 120px;
+    margin: 20px 0;
+}
+
+
+.wish-card {
+    background: var(--card-bg);
+    border: 2px solid #e9d8a6;
+    backdrop-filter: blur(20px);
+    padding: 80px 60px;
+    border-radius: 50px;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    box-shadow: 0 30px 60px rgba(212, 163, 115, 0.15);
+    position: relative;
+}
+
+.wish-card::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    border: 1px solid rgba(212, 163, 115, 0.2);
+    border-radius: 40px;
+    pointer-events: none;
+}
+
+.wish-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+
+.message-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-style: italic;
+    color: #555;
+    margin-bottom: 40px;
+}
+
+.signature {
+    font-weight: 300;
+    font-size: 1rem;
+    color: #888;
+}
+
+.sender-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--text-color);
+    background: linear-gradient(90deg, var(--primary-color), var(--text-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+.section-footer {
+    width: 100%;
+    text-align: center;
+    padding: 30px 0;
+    margin-top: auto; /* Push to bottom of flex container */
+    color: var(--text-color);
+    font-size: 0.8rem;
+    opacity: 0.6;
+    font-family: 'Outfit', sans-serif;
+}
+
+.section-footer p {
+    margin: 0;
+}
+
+#fireworks {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 99999;
+}
+
+
+
+
+
+/* Responsiveness Premium */
+@media (max-width: 768px) {
+    body {
+        overflow-y: auto; /* Allow natural scroll for mobile immersion */
+        height: auto;
+        min-height: 100vh;
+    }
+
+    section {
+        position: relative; /* Change from absolute for better mobile flow */
+        height: auto;
+        min-height: 100vh;
+        display: none;
+        padding-bottom: 100px;
+    }
+
+    section#hero {
+        display: flex;
+    }
+
+    .romantic-font {
+        font-size: 2.8rem !important;
+    }
+
+    .hero-content .title {
+        font-size: 2.8rem;
+    }
+
+    .journey-card.glass {
+        padding: 30px 20px;
+        border-radius: 30px;
+    }
+
+    #typer-journey {
+        font-size: 1.1rem;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .gallery-item img {
+        height: 300px;
+    }
+
+    .wish-card {
+        padding: 40px 20px;
+        border-radius: 30px;
+    }
+
+    .message-text {
+        font-size: 1.1rem;
+    }
+
+    #game-canvas {
+        height: 450px;
+    }
+
+    #panda-catcher {
+        width: 60px;
+        height: 60px;
+    }
+}
+
