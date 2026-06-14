@@ -37,6 +37,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log("Name entered:", name);
                 document.getElementById('userName').textContent = name;
                 
+                // --- Start Music Immediately on Interaction ---
+                audio.play().then(() => {
+                    isPlaying = true;
+                    musicBtn.style.animation = 'pulse 1s infinite';
+                    musicBtn.innerHTML = '🎵';
+                }).catch(e => console.warn("Autoplay blocked, waiting for next click:", e));
+
                 const panda = document.getElementById('panda-mascot');
                 
                 // Faster Hide loader
