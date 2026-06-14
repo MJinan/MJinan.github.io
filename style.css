@@ -440,6 +440,95 @@ section {
     color: var(--primary-color);
 }
 
+/* Interactive Gift Unboxing Styles */
+.gift-wrapper {
+    position: relative;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+}
+
+#gift-box {
+    cursor: pointer;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+}
+
+#gift-box img {
+    width: 140px;
+    filter: drop-shadow(0 15px 30px rgba(0,0,0,0.15));
+}
+
+#gift-box:hover {
+    transform: scale(1.1);
+}
+
+.gift-animate {
+    animation: giftShake 0.6s infinite;
+}
+
+@keyframes giftShake {
+    0% { transform: rotate(0deg) scale(1); }
+    10% { transform: rotate(5deg) scale(1.05); }
+    20% { transform: rotate(-5deg); }
+    30% { transform: rotate(3deg); }
+    40% { transform: rotate(-3deg); }
+    50% { transform: rotate(0deg); }
+    100% { transform: rotate(0deg); }
+}
+
+.gift-hint {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-top: 15px;
+    text-align: center;
+    animation: floatHint 2s ease-in-out infinite;
+    text-shadow: 0 0 10px rgba(255, 175, 204, 0.5);
+}
+
+@keyframes floatHint {
+    0%, 100% { transform: translateY(0); opacity: 0.8; }
+    50% { transform: translateY(-10px); opacity: 1; }
+}
+
+.surprise-card {
+    background: rgba(255, 255, 255, 0.9) !important;
+    padding: 40px !important;
+    border-radius: 40px !important;
+    border: 3px solid var(--primary-color) !important;
+    box-shadow: 0 25px 60px rgba(255, 175, 204, 0.3) !important;
+    max-width: 600px;
+    text-align: center;
+    position: relative;
+    z-index: 100;
+}
+
+.surprise-mascot {
+    width: 120px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+}
+
+.surprise-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-style: italic;
+    color: #444;
+    margin: 20px 0 30px;
+    line-height: 1.5;
+}
+
+.final-buttons .romantic-btn {
+    padding: 12px 30px !important;
+}
+
+.final-buttons .romantic-btn span {
+    font-size: 1.2rem !important;
+}
+
 /* Interactive Game */
 #game {
     background: #faedcd;

@@ -454,23 +454,74 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function winGame() {
         gameActive = false;
-        gameMessage.innerHTML = '<div class="win-banner">YEAY! Hadiah Buat Dedek : 🎁<br><span>I Love You More Than Anything And I Love You In Every Universe! ❤️</span></div>';
         
-        // Fancy Win Sequence
+        // Clear falling items
+        document.querySelectorAll('.falling-heart').forEach(h => h.remove());
+
+        // Show Shaking Gift
+        gameMessage.innerHTML = `
+            <div class="gift-wrapper">
+                <div id="gift-box" class="gift-animate">
+                    <img src="https://feeldreams.github.io/kadoin.png" alt="Gift Box">
+                    <div class="gift-hint">Klik Kadonya Sayang! 🎁</div>
+                </div>
+                <div id="surprise-content" class="glass surprise-card" style="display: none; opacity: 0; transform: scale(0.8);">
+                    <img src="https://feeldreams.github.io/mndkat.gif" alt="Surprise Mascot" class="surprise-mascot">
+                    <h3 class="romantic-font">Khusus Buat Dedek Sayang ❤️</h3>
+                    <p class="surprise-text">"I Love You More Than Anything And I Love You In Every Universe! Always and Forever yours." ❤️</p>
+                    <div class="final-buttons">
+                        <button class="romantic-btn" onclick="location.reload()">
+                            <span>Main Lagi?</span>
+                            <div class="heart-icon">💖</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        const giftBox = document.getElementById('gift-box');
+        const surprise = document.getElementById('surprise-content');
+
+        giftBox.onclick = () => {
+            // 1. Shaking stops, blast kembang api
+            giftBox.classList.remove('gift-animate');
+            startLoveFireworks();
+            
+            // 2. Animate Box opening/disappearing
+            gsap.to(giftBox, {
+                scale: 1.5,
+                opacity: 0,
+                duration: 0.5,
+                ease: 'power2.in',
+                onComplete: () => {
+                    giftBox.style.display = 'none';
+                    
+                    // 3. Reveal Secret Message
+                    surprise.style.display = 'block';
+                    gsap.to(surprise, {
+                        opacity: 1,
+                        scale: 1,
+                        y: -20,
+                        duration: 1,
+                        ease: 'back.out(1.7)'
+                    });
+                    
+                    // Additional confetti burst
+                    for (let i = 0; i < 50; i++) {
+                        setTimeout(spawnWinParticle, i * 50);
+                    }
+                }
+            });
+        };
+
+        // Focus panda catcher at center
         gsap.to(pandaCatcher, {
             left: '50%',
-            bottom: '40%',
-            scale: window.innerWidth < 768 ? 2 : 3,
+            bottom: '20%',
+            scale: 1.5,
             duration: 1,
             ease: "back.out(2)"
         });
-
-        // Trigger Love Fireworks
-        startLoveFireworks();
-
-        for (let i = 0; i < 40; i++) {
-            setTimeout(spawnWinParticle, i * 80);
-        }
     }
 
     function spawnWinParticle() {
