@@ -481,6 +481,10 @@ document.addEventListener('DOMContentLoaded', () => {
                             <span>Main Lagi?</span>
                             <div class="heart-icon">💖</div>
                         </button>
+                        <button class="romantic-btn" onclick="window.open('https://wa.me/6281226516661?text=Hai%20Mas%20Sayang!%20Makasih%20ya%20buat%20kadonya,%20dedek%20suka%20banget!%20Dedek%20Sayang%20banget%20sama%20Mas%20Sayang%20❤️', '_blank')">
+                            <span>Balas Pesan</span>
+                            <div class="heart-icon">💬</div>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -746,4 +750,58 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     setInterval(createFallingItem, 700);
+
+    // --- Romantic & Modern Interaction System (Cursor Trail & Mobile Tap) ---
+    const interactionItems = ['❤️', '✨', '🌸', '🦋', '💖', '💍'];
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+    function spawnInteractionParticle(x, y, isBurst = false) {
+        const count = isBurst ? 6 : 1;
+        
+        for (let i = 0; i < count; i++) {
+            const p = document.createElement('div');
+            p.className = 'cursor-particle';
+            p.innerHTML = interactionItems[Math.floor(Math.random() * interactionItems.length)];
+            
+            // Randomize position slightly for burst
+            const offsetX = isBurst ? (Math.random() - 0.5) * 60 : 0;
+            const offsetY = isBurst ? (Math.random() - 0.5) * 60 : 0;
+            
+            p.style.left = (x + offsetX) + 'px';
+            p.style.top = (y + offsetY) + 'px';
+            document.body.appendChild(p);
+
+            const travelX = (Math.random() - 0.5) * 150;
+            const travelY = isBurst ? -(Math.random() * 200 + 100) : -(Math.random() * 80 + 50);
+
+            gsap.to(p, {
+                x: travelX,
+                y: travelY,
+                rotation: 'random(-360, 360)',
+                opacity: 0,
+                scale: 0.5,
+                duration: isBurst ? 2 : 1.5,
+                ease: 'power1.out',
+                onComplete: () => p.remove()
+            });
+        }
+    }
+
+    if (!isMobile) {
+        // PC Cursor Trail
+        let lastSpawn = 0;
+        document.addEventListener('mousemove', (e) => {
+            const now = Date.now();
+            if (now - lastSpawn > 50) { // Throttling for performance
+                spawnInteractionParticle(e.clientX, e.clientY);
+                lastSpawn = now;
+            }
+        });
+    } else {
+        // Mobile Tap Burst
+        document.addEventListener('touchstart', (e) => {
+            const touch = e.touches[0];
+            spawnInteractionParticle(touch.clientX, touch.clientY, true);
+        }, { passive: true });
+    }
 });
